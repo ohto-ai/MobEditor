@@ -1,0 +1,125 @@
+# ============================================================================
+# MobEditor - Simplified Chinese Messages
+# ============================================================================
+
+# ---- Plugin lifecycle ----
+plugin:
+  config_loaded: "配置已加载。"
+  listener_registered: "监听器已注册。"
+  commands_registered: "命令已注册。"
+  enabled: "MobEditor 已启用！"
+
+# ---- Tool ----
+tool:
+  set_done: "§a已将手持物品设为编辑工具。（右键生物使用，Shift+右键切换模式）"
+  set_failed: "§c请手持一个非空气物品。"
+  disabled: "§a编辑工具已禁用。"
+  cleared: "§a工具设置已清除。"
+  not_set: "§c尚未设置工具。使用 /me tool set 手持物品来设置。"
+  info_header: "§6===== 工具信息 ====="
+  info_status: "§7状态: {status}"
+  info_item: "§7工具物品: §f{type}"
+  info_enabled: "§a已启用"
+  info_disabled: "§c已禁用"
+  no_perm: "§c你没有使用此命令的权限。"
+
+# ---- Mode ----
+mode:
+  set: "§a模式已设为: §f{mode}"
+  current: "§7当前模式: §f{mode}"
+  unknown: "§c未知模式: {mode}。可用: open, copy, paste, egg"
+
+# ---- Paste blanks ----
+pasteblanks:
+  set_on: "§a粘贴空白已 §a§l开启 §a（空槽位将清空目标槽位）"
+  set_off: "§a粘贴空白已 §c§l关闭 §a（空槽位将跳过）"
+  current: "§7粘贴空白: {value}"
+  on: "§a已开启"
+  off: "§c已关闭"
+
+# ---- Mode Selection GUI ----
+mode_selection:
+  title: "选择操作模式"
+  open_equipment: "§6编辑装备"
+  open_equipment_lore: "§7打开实体装备栏进行编辑"
+  copy: "§b复制装备"
+  copy_lore: "§7将实体装备信息复制到缓存区"
+  paste: "§a粘贴装备"
+  paste_lore: "§7将缓存区装备粘贴到此实体"
+  extract_egg: "§d提取刷怪蛋"
+  extract_egg_lore: "§7提取实体全部信息生成刷怪蛋"
+  current_mode: "§e当前模式: §f{mode}"
+  paste_blanks_toggle: "§7粘贴空白: {value}"
+  paste_blanks_toggle_lore: "§7点击切换（开启时空槽位会清空目标）"
+  selected_glow: "§6▶ 已选中"
+
+# ---- Equipment Edit GUI ----
+equipment_edit:
+  title: "编辑装备: {name}"
+  refresh: "§e⟳ 刷新"
+  refresh_lore: "§7点击重新读取实体装备"
+  entity_info: "§e{name}"
+  entity_info_lore: "§7实体装备编辑模式"
+  slot_mainhand: "§b主手"
+  slot_offhand: "§b副手"
+  slot_helmet: "§b头盔"
+  slot_chestplate: "§b胸甲"
+  slot_leggings: "§b护腿"
+  slot_boots: "§b靴子"
+  slot_empty: "§7(空)"
+
+# ---- Clipboard ----
+clipboard:
+  copied: "§a已将 §f{entity} §a的装备复制到缓存区。"
+  empty: "§c缓存区为空。请先使用复制模式。"
+  preview_title: "§8缓存区: {name}"
+  slot_label: "§b{slot}"
+  slot_empty: "§7(空)"
+  timestamp: "§7复制时间: §f{time}"
+  entity_info: "§7来源: §f{type} §8| §f{name}"
+  inventory_label: "§7物品栏 ({count} 格)"
+
+# ---- Paste ----
+paste:
+  confirm_title: "§8确认粘贴: {name}"
+  confirm_button: "§a§l确认粘贴"
+  confirm_button_lore: "§7点击确认粘贴操作"
+  cancel_button: "§c§l取消"
+  cancel_button_lore: "§7点击取消"
+  paste_blanks_info: "§7粘贴空白: {value}"
+  skip_empty: "§7空槽位将被跳过"
+  clear_empty: "§c空槽位将清空目标"
+  done: "§a已将缓存区装备粘贴到 §f{entity}§a。"
+  no_changes: "§e缓存区无可粘贴的物品。"
+  no_target: "§c目标实体没有可编辑的装备栏。"
+
+# ---- Egg ----
+egg:
+  extracted: "§a已将 §f{entity} §a的全部信息提取到刷怪蛋中！"
+  no_spawn_egg: "§c此实体类型 ({type}) 没有对应的刷怪蛋。"
+  spawned: "§a已成功生成 §f{entity}§a！"
+  given: "§a刷怪蛋已放入你的背包。"
+
+# ---- Reload ----
+reload:
+  done: "§a配置已重载。"
+
+# ---- Help ----
+help:
+  header: "§6===== MobEditor v{version} ====="
+  tool_set: "§e/me tool set §7— 手持物品设为编辑工具"
+  tool_disable: "§e/me tool disable §7— 禁用编辑工具"
+  tool_info: "§e/me tool info §7— 查看工具信息"
+  tool_clear: "§e/me tool clear §7— 清除工具设置"
+  mode: "§e/me mode <open|copy|paste|egg> §7— 设置模式"
+  pasteblanks: "§e/me pasteblanks <on|off> §7— 粘贴空白开关"
+  reload: "§e/me reload §7— 重载配置"
+  usage_hint: "§7使用: 手持工具右键生物 = 执行模式 | Shift+右键 = 切换模式"
+
+# ---- General ----
+general:
+  unknown_subcommand: "§c未知子命令: {cmd}。"
+  usage: "§e用法: /mobeditor <tool|mode|pasteblanks|reload>"
+  no_permission: "§c你没有使用此命令的权限。"
+  player_only: "§c此命令仅玩家可用。"
+  no_entity: "§c目标必须是活体生物 (LivingEntity)。"

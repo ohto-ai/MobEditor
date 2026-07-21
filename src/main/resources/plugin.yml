@@ -1,0 +1,22 @@
+name: MobEditor
+version: ${version}
+main: com.ohtoai.mobeditor.MobEditor
+api-version: "1.20"
+description: ${description}
+author: OhtoAi
+
+permissions:
+  mobeditor.admin:
+    description: "All MobEditor admin commands"
+    default: op
+    children:
+      mobeditor.use: true
+  mobeditor.use:
+    description: "Use the MobEditor tool on entities"
+    default: op
+
+commands:
+  mobeditor:
+    description: "MobEditor main command"
+    usage: "/mobeditor <subcommand>"
+    aliases: [me]

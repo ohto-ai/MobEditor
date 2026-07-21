@@ -1,0 +1,9 @@
+# MobEditor Configuration
+# Set via /mobeditor tool set while holding the desired item.
+# Cleared via /mobeditor tool clear.
+
+tool:
+  enabled: false
+  # The tool item serialized as Base64 bytes (ItemStack.serializeAsBytes).
+  # Set automatically by /mobeditor tool set.
+  item: ""
