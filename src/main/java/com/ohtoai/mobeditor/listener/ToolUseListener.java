@@ -186,23 +186,13 @@ public class ToolUseListener implements Listener {
     private void executeExtractEgg(Player player, Entity entity) {
         Messages msg = plugin.getMessages();
 
-        if (!(entity instanceof LivingEntity living)) {
-            player.sendMessage("§c只有活体生物才能提取为刷怪蛋。");
-            return;
-        }
-
         String entityName = entity.getCustomName() != null
                 ? entity.getCustomName()
                 : entity.getType().getKey().getKey();
 
         plugin.getServer().getAsyncScheduler().runNow(plugin, task -> {
             try {
-                ItemStack egg = SpawnEggExtractor.createSpawnEgg(living);
-                if (egg == null) {
-                    player.sendMessage(msg.get("egg.no_spawn_egg",
-                            "{type}", entity.getType().getKey().getKey()));
-                    return;
-                }
+                ItemStack egg = SpawnEggExtractor.createSpawnEgg(entity);
 
                 plugin.getServer().getScheduler().runTask(plugin, () -> {
                     var overflow = player.getInventory().addItem(egg);

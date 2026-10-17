@@ -1,6 +1,9 @@
 package com.ohtoai.mobeditor.gui;
 
 import com.ohtoai.mobeditor.MobEditor;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,6 +20,9 @@ public class GuiListener implements Listener {
 
     private final MobEditor plugin;
     private static final int FULL_GUI = 54; // equipment / combined views use 54-slot GUI
+
+    /** GUI slots that hold equipment (right-click → drop chance editor). */
+    private static final java.util.Set<Integer> EQUIP_SLOTS = java.util.Set.of(4, 13, 22, 23, 31, 32);
 
     public GuiListener(MobEditor plugin) {
         this.plugin = plugin;
@@ -68,6 +74,22 @@ public class GuiListener implements Listener {
             // Block non-editable slots
             if (isTopInventory && EntityEditGui.isNonEditableSlot(holder, slot, guiSize)) {
                 event.setCancelled(true);
+                return;
+            }
+
+            // Right-click on equipment slot → open drop chance editor
+            if (click == ClickType.RIGHT && isTopInventory && isFullGui
+                    && EQUIP_SLOTS.contains(slot)) {
+                event.setCancelled(true);
+                Entity entity = Bukkit.getEntity(holder.entityUuid());
+                if (entity instanceof LivingEntity living && living.getEquipment() != null) {
+                    // Sync any pending changes first
+                    scheduleSync(player, top, holder);
+                    // Open drop chance anvil (Paper-native)
+                    plugin.getServer().getScheduler().runTask(plugin, () -> {
+                        DropChanceGui.open(player, living, slot);
+                    });
+                }
                 return;
             }
 
@@ -136,10 +158,23 @@ public class GuiListener implements Listener {
 
     // ── Close ────────────────────────────────────────────────────────────
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onClose(InventoryCloseEvent event) {
         Inventory top = event.getView().getTopInventory();
         Player player = (Player) event.getPlayer();
+
+        // ── Drop chance anvil (Paper-native, no custom holder) ──
+        if (top.getType() == InventoryType.ANVIL) {
+            DropChanceGui.PendingEdit pending = DropChanceGui.consumePending(player);
+            if (pending != null) {
+                DropChanceGui.handleAnvilClose(player, top, pending);
+                // Reopen the entity edit GUI after anvil closes
+                plugin.getServer().getScheduler().runTask(plugin, () -> {
+                    DropChanceGui.reopenEntityEdit(player, pending.entityUuid());
+                });
+            }
+            return;
+        }
 
         if (top.getHolder() instanceof GuiHolders.EntityEditHolder holder) {
             // Final sync on close

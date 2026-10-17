@@ -1,6 +1,6 @@
 # MobEditor
 
-A Paper 1.20.6 plugin for editing mobs and entities in-game through a configurable tool and GUI. MobEditor lets administrators edit equipment, copy and paste loadouts, and extract a fully configured entity into a spawn egg — without touching command syntax or NBT by hand.
+A Paper 1.20.6 plugin for editing mobs and entities in-game through a configurable tool and GUI. MobEditor lets administrators edit equipment, copy and paste loadouts, adjust drop chances, and extract a fully configured entity into a spawn egg — without touching command syntax or NBT by hand.
 
 ## Features
 
@@ -12,8 +12,10 @@ A Paper 1.20.6 plugin for editing mobs and entities in-game through a configurab
   - `paste` — paste the clipboard onto another entity (with confirmation)
   - `egg` — extract the entity, including equipment, attributes, and name, into a spawn egg
 - **Equipment editing GUI** — main hand, off hand, helmet, chestplate, leggings, boots
+- **Drop chance GUI** — configure per-slot equipment drop chances
 - **Paste blanks toggle** — choose whether empty slots clear or skip target slots
 - **Spawn egg extraction** — extract the entity, including equipment, attributes, and name, into a spawn egg
+- **Spawn egg listener** — respawn extracted entities with their saved health restored
 - **Chinese messages** included, with a messages file for customization
 - **Reload command** for config and messages
 
@@ -64,7 +66,7 @@ Main command: `/mobeditor` (alias `/me`).
 1. Set a tool with `/me tool set`.
 2. Right-click an entity to execute the current mode.
 3. Shift+right-click an entity to open the mode selection GUI.
-4. Use the equipment GUI to edit slots.
+4. Use the equipment GUI to edit slots, or right-click a slot to set its drop chance.
 5. In `egg` mode, right-click an entity to receive a spawn egg containing its full configuration.
 
 ## Permissions

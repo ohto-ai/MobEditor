@@ -31,4 +31,5 @@ public final class GuiHolders {
     public record PasteConfirmHolder(UUID entityUuid, String entityName, UUID editorUuid) implements InventoryHolder {
         @Override public @NotNull Inventory getInventory() { return null; }
     }
+
 }

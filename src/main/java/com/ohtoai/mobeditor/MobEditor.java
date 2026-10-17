@@ -6,6 +6,7 @@ import com.ohtoai.mobeditor.command.MEditorTabCompleter;
 import com.ohtoai.mobeditor.config.ConfigManager;
 import com.ohtoai.mobeditor.config.Messages;
 import com.ohtoai.mobeditor.gui.GuiListener;
+import com.ohtoai.mobeditor.listener.EggUseListener;
 import com.ohtoai.mobeditor.listener.PlayerQuitListener;
 import com.ohtoai.mobeditor.listener.ToolUseListener;
 import com.ohtoai.mobeditor.mode.ModeManager;
@@ -64,6 +65,7 @@ public final class MobEditor extends JavaPlugin {
         getServer().getPluginManager().registerEvents(toolUseListener, this);
         getServer().getPluginManager().registerEvents(new GuiListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
+        getServer().getPluginManager().registerEvents(new EggUseListener(this), this);
         getLogger().info(messages.getRaw("plugin.listener_registered"));
 
         // 4. Register commands

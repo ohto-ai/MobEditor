@@ -116,6 +116,10 @@ help:
   reload: "§e/me reload §7— 重载配置"
   usage_hint: "§7使用: 手持工具右键生物 = 执行模式 | Shift+右键 = 切换模式"
 
+# ---- Drop Chance ----
+drop_chance:
+  set_done: "§a已将 {slot} 掉落率设为: §f{value}"
+
 # ---- General ----
 general:
   unknown_subcommand: "§c未知子命令: {cmd}。"
