@@ -2,6 +2,12 @@
 
 A Paper 1.20.6 plugin for editing mobs and entities in-game through a configurable tool and GUI. MobEditor lets administrators edit equipment, copy and paste loadouts, adjust drop chances, and extract a fully configured entity into a spawn egg — without touching command syntax or NBT by hand.
 
+## Screenshots
+
+![Equipment editing GUI](docs/screenshots/mobeditor-equipment.webp)
+
+![Mode selection GUI](docs/screenshots/mobeditor-modes.webp)
+
 ## Features
 
 - **Configurable editor tool** — set any held item as the tool with `/me tool set`
